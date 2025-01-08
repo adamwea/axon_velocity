@@ -142,3 +142,8 @@ dmypy.json
 # Neuron
 *.c
 *.o
+
+# Axon Recon Stuff
+#AxonReconAnalysis/**/logs/**
+AxonReconAnalysis/**/output/**
+AxonReconAnalysis/**/input/**
