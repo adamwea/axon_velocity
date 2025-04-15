@@ -1044,7 +1044,7 @@ class GraphAxonTracking(AxonTracking):
                 outlier_idxs = np.where(inlier_mask == False)
                 plot_velocity(peaks[inlier_mask], dists[inlier_mask],
                               velocity, offset, color=color, r2=r2,
-                              ax=ax_vel, markeredgecolor="k", alpha_markers=alpha, lw=2, markersize=markersize,
+                              ax=ax_vel, markeredgecolor="k", alpha_markers=alpha, lw=lw, markersize=markersize,
                               fs=fs, plot_markers=True)
                 ax_vel.plot(peaks[outlier_idxs], dists[outlier_idxs], marker='d', ls='', color=color,
                             markersize=markersize_out, markeredgecolor="k", zorder=10, alpha=alpha_outliers)
