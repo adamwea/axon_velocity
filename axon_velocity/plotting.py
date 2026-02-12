@@ -241,7 +241,7 @@ def play_template_map(template, locations, gtr=None, elec_size=8, cmap='viridis'
     template_skip = template[:, ::skip_frames]
     for i in tqdm(np.arange(template_skip.shape[1]), desc="Generating frames"):
         t = template_skip[:, i]
-        img, xlims, ylims = _get_image(t, probe, log=False, compress=False, min_value=min_value, **to_image_kwargs)
+        img, xlims, ylims = _get_image(t, probe, **to_image_kwargs)
         im = ax.imshow(img, extent=xlims + ylims, origin="lower", vmin=vmin, vmax=vmax, cmap=cmap)
 
         ims.append([im])
@@ -324,8 +324,8 @@ def plot_axon_summary(gtr, ax=None, fig=None, figsize=(10, 7),
             ax3 = fig.add_subplot(2, 2, 3)
             ax4 = fig.add_subplot(2, 2, 4)
     else:
-        gs_global = gridspec.GridSpecFromSubplotSpec(2, 2, subplot_spec=ax)
         fig = ax.get_figure()
+        gs_global = gridspec.GridSpecFromSubplotSpec(2, 2, subplot_spec=ax.get_subplotspec())
         ax1 = fig.add_subplot(gs_global[0, 0])
         ax2 = fig.add_subplot(gs_global[0, 1])
         ax3 = fig.add_subplot(gs_global[1, 0])
@@ -348,7 +348,7 @@ def plot_axon_summary(gtr, ax=None, fig=None, figsize=(10, 7),
     ax1.plot(init[0], init[1], marker='o', color='r', markersize=5)
     plot_peak_latency_map(template, locations, gtr.fs, ax=ax2)
     ax2.plot(init[0], init[1], marker='o', color='r', markersize=5)
-    gs = gridspec.GridSpecFromSubplotSpec(1, len(gtr.branches), subplot_spec=ax3)
+    gs = gridspec.GridSpecFromSubplotSpec(1, len(gtr.branches), subplot_spec=ax3.get_subplotspec())
     ax1.set_title("amplitude", fontsize=15)
     ax2.set_title("peak latency", fontsize=15)
 
