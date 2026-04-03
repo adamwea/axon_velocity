@@ -142,3 +142,6 @@ dmypy.json
 # Neuron
 *.c
 *.o
+
+#vscode
+.vscode/
